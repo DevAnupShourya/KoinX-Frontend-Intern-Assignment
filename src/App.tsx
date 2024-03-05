@@ -1,8 +1,10 @@
+import Navbar from "./components/Navbar"
+
 function App() {
   return (
-    <>
-      <h1 className="text-4xl bg-bg-primary">Hello KoinX :)</h1>
-    </>
+    <section className="bg-bg-primary w-screen transition-all ease-in-out">
+      <Navbar/>
+    </section>
   )
 }
 
