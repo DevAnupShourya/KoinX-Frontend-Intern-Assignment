@@ -6,12 +6,12 @@ function Navbar() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   return (
-    <nav className="w-full flex-row-center bg-bg-secondary shadow-lg py-4 padding-x sticky top-0 left-0">
+    <nav className="w-full flex_row_center bg-bg-secondary shadow-lg py-4 padding-x sticky top-0 left-0">
       <div id="logo">
         <img src="Logo.svg" alt="KoinX" />
       </div>
       {/* Navbar for large devices */}
-      <div className="flex-row-center gap-8 max-md:gap-2  max-sm:hidden ">
+      <div className="flex_row_center gap-8 max-md:gap-2  max-sm:hidden ">
         <a href={"cryptotaxes"} className="navbar_links">
           Crypto Taxes
         </a>
