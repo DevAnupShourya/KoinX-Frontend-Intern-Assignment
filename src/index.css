@@ -1,26 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.8;
-  -webkit-overflow-scrolling: touch;
-  transition: all 0.05s ease-in;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-}
-
 @layer {
   .padding-x {
-    @apply px-12 max-md:px-6;
+    @apply px-12 max-md:px-3;
   }
   .flex_row_center {
     @apply flex flex-row justify-between items-center;
@@ -38,6 +20,72 @@ body {
     @apply grid place-items-center;
   }
   .title {
-    @apply text-xl font-bold tracking-wider capitalize py-2;
+    @apply text-2xl font-bold tracking-wider capitalize py-2 mb-2;
   }
+  .sub_title {
+    @apply text-xl font-bold tracking-wider capitalize py-2 mb-2 text-gray-800;
+  }
+  .product_navLinks{
+    @apply text-base capitalize py-2 text-pretty;
+  }
+  .progressbar_gradient {
+    background-image: linear-gradient(90deg, #FF4949 0%, #FF4E11 15.34%, #FC870A 30.45%, #FFAF11 48.68%, #C2CB21 62.75%, #11EB68 100.03%);
+  }
+  .bg_blue_light{
+    background-color: rgb(219 234 254);
+  }
+  .bg_blue_dark{
+    background-color: rgb(37 99 235);
+  }
+  .bg_red_light{
+    background-color: rgb(254 226 226);
+  }
+  .bg_red_dark{
+    background-color: rgb(220 38 38);
+  }
+  .bg_green_light{
+    background-color: rgb(220 252 231);
+  }
+  .bg_green_dark{
+    background-color: rgb(22 163 74);
+  }
+  .bg_purple_light{
+    background-color: rgb(243 232 255);
+  }
+  .bg_purple_dark{
+    background-color: rgb(147 51 234);
+  }
+}
+
+.hideScrollBar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.hideScrollBar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.hideScrollBar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Inter", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.8;
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.05s ease-in;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 }

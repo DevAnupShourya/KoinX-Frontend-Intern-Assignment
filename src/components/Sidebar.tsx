@@ -1,12 +1,13 @@
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import AdImage from "../assets/ad.svg";
 import ProductValuation from "./ProductValuation";
+
 function Sidebar() {
   return (
-    <aside className="border w-1/4 max-md:hidden">
+    <aside className="border w-1/4 max-lg:w-full">
       <div
         id="advertisement_banner"
-        className="bg-gradient-to-br from-[#2870EA] to-[#1B4AEF] text-white text-center p-5 rounded-md"
+        className="bg-[#1B4AEF] text-white text-center p-5 rounded-md"
       >
         <h1 className="text-2xl font-bold">Get Started with KoinX for FREE</h1>
         <p className="text-sm">
@@ -19,7 +20,7 @@ function Sidebar() {
           className="object-center mx-auto my-5"
         />
         <a href="" className="normal_btn text-black inline-block">
-          Get Started for FREE <LiaLongArrowAltRightSolid className="inline" />
+          Get Started for FREE <LiaLongArrowAltRightSolid className="inline ml-1" />
         </a>
       </div>
       <div id="Trending_Coins" className="p-4 bg-bg-secondary shadow-lg rounded-xl my-5">

@@ -14,11 +14,6 @@ function App() {
           <Route path="/:productId" element={<ProductDetails />} />
         </Routes>
       </BrowserRouter>
-      <footer className="bg-bg-secondary shadow-lg py-4 padding-x">
-        <p className="title">you may also like</p>
-        <div>charts carousel</div>
-        <div>charts carousel</div>
-      </footer>
     </section>
   );
 }

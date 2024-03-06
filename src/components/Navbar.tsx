@@ -6,7 +6,7 @@ function Navbar() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   return (
-    <nav className="w-full flex_row_center bg-bg-secondary shadow-lg py-4 padding-x sticky top-0 left-0">
+    <nav className="z-10 w-full flex_row_center bg-bg-secondary shadow-lg py-4 padding-x sticky top-0 left-0">
       <div id="logo">
         <img src="Logo.svg" alt="KoinX" />
       </div>
