@@ -1,9 +1,24 @@
-import { IoMdInformationCircle } from "react-icons/io";
 import StatsDataRow from "../components/StatsDataRow";
+import { IoMdInformationCircle } from "react-icons/io";
 
-function ProductPerformance() {
+interface ProductPerformanceProps {
+  price: number;
+  high_24h: number;
+  low_24h: number;
+  total_volume: number;
+  rank: number;
+  market_cap: number;
+  ath: number;
+  ath_date: Date;
+  ath_change_percentage: number;
+  atl: number;
+  atl_date: Date;
+  atl_change_percentage: number;
+}
+
+function ProductPerformance(props: ProductPerformanceProps) {
   return (
-    <div id="overview"  className="p-4 bg-bg-secondary rounded-xl mb-4">
+    <div id="overview" className="p-4 bg-bg-secondary rounded-xl mb-4">
       <p className="title">Performance</p>
       <div
         id="todaysLowHigh"
@@ -43,10 +58,13 @@ function ProductPerformance() {
         </p>
         <div className="flex justify-between items-stretch gap-20 max-md:flex-wrap max-md:gap-1">
           <div className="w-1/2 max-md:w-full flex flex-col">
-            <StatsDataRow dataName="Bitcoin Price" dataValue="$16,815.46" />
+            <StatsDataRow
+              dataName="Bitcoin Price"
+              dataValue={`$${props.price}`}
+            />
             <StatsDataRow
               dataName="24h Low / 24h High"
-              dataValue="$16,382.07 / $16,874.12"
+              dataValue={`$${props.low_24h} / $${props.high_24h}`}
             />
             <StatsDataRow
               dataName="7d Low / 7d High"
@@ -54,12 +72,18 @@ function ProductPerformance() {
             />
             <StatsDataRow
               dataName="Trading Volume"
-              dataValue="$23,249,202,782"
+              dataValue={`$${props.total_volume}`}
             />
-            <StatsDataRow dataName="Market Cap Rank" dataValue="#1" />
+            <StatsDataRow
+              dataName="Market Cap Rank"
+              dataValue={`#${props.rank}`}
+            />
           </div>
           <div className="w-1/2 max-md:w-full flex flex-col">
-            <StatsDataRow dataName="Market Cap" dataValue="$323,507,290,047" />
+            <StatsDataRow
+              dataName="Market Cap"
+              dataValue={`$${props.market_cap}`}
+            />
             <StatsDataRow dataName="Market Cap Dominance" dataValue="38.343%" />
             <StatsDataRow dataName="Volume / Market Cap" dataValue="0.0718" />
             <StatsDataRow
@@ -67,10 +91,13 @@ function ProductPerformance() {
               dataNode={
                 <div>
                   <h2 className="text-gray-900 text-end font-semibold">
-                    $69,044.77 <span className="text-red-500">-75.6%</span>
+                    ${props.ath}{" "}
+                    <span className="text-red-500">
+                      {props.ath_change_percentage.toFixed(1)}%
+                    </span>
                   </h2>
                   <p className="text-xs text-end">
-                    Nov 10, 2021 (about 1 year)
+                    {new Date(props.ath_date).toDateString()}(about 1 year)
                   </p>
                 </div>
               }
@@ -80,10 +107,13 @@ function ProductPerformance() {
               dataNode={
                 <div>
                   <h2 className="text-gray-900 text-end font-semibold">
-                    $67.81 <span className="text-green-600">24729.1%</span>
+                    ${props.atl}{" "}
+                    <span className="text-green-500">
+                      {props.atl_change_percentage.toFixed(1)}
+                    </span>
                   </h2>
                   <p className="text-xs  text-end ">
-                    Jul 06, 2013 (over 9 years)
+                    {new Date(props.atl_date).toDateString()} (over 9 years)
                   </p>
                 </div>
               }

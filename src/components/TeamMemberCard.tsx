@@ -6,9 +6,13 @@ interface MemberProps {
 
 function TeamMemberCard(props: MemberProps) {
   return (
-    <div className="p-4 my-4 bg-blue-100 flex_row_center max-md:flex-wrap rounded-lg">
+    <div className="p-4 my-4 bg-blue-100 flex_row_center max-md:flex-wrap rounded-lg gap-4">
       <div className="w-1/4 max-md:w-full max-md:text-center">
-        <img src={props.imageUrl} alt={`${props.name}'s Image`} className="mx-auto w-32 h-32 rounded-md"/>
+        <img
+          src={props.imageUrl}
+          alt={`${props.name}'s Image`}
+          className="mx-auto w-32 h-32 rounded-md"
+        />
         <p className="text-center font-bold capitalize mt-2">{props.name}</p>
         <p className="text-center text-sm">{props.position}</p>
       </div>

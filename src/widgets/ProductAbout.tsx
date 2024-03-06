@@ -1,17 +1,11 @@
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 
-function ProductAbout() {
+function ProductAbout(props: { productName: string; desc: string }) {
   return (
-    <div id="about " className="p-4 bg-bg-secondary rounded-xl mb-4">
-      <p className="title">About Bitcoin</p>
-      <p className="sub_title">What is Bitcoin?</p>
-      <p className="text-pretty">
-        Bitcoins price today is US$16,951.82, with a 24 hour trading volume of
-        $19.14 B. BTC is +0.36% in the last 24 hours. It is currently 7.70% from
-        its 7 day all time high of $18,366.66, and 3.40% from its 7 day all time
-        low of $16,394.75. BTC has a circulating supply of 19.24 M BTC and a max
-        supply of 21 M BTC.
-      </p>
+    <div id="about" className="p-4 bg-bg-secondary rounded-xl mb-4">
+      <p className="title">About {props.productName}</p>
+      <p className="sub_title">What is {props.productName}?</p>
+      <p className="text-pretty">{props.desc}</p>
       <hr className="my-2" />
       <p className="sub_title">Lorem ipsum dolor sit amet</p>
       <p className="text-pretty">
@@ -20,7 +14,7 @@ function ProductAbout() {
         Viverra diam suspendisse enim facilisi diam ut sed. Quam scelerisque
         fermentum sapien morbi sodales odio sed rhoncus. Ultricies urna volutpat
         pendisse enim facilisi diam ut sed. Quam scelerisque fermentum sapien
-        morbi sodales odio sed rhoncus.{" "}
+        morbi sodales odio sed rhoncus.
       </p>
       <p className="text-pretty my-4">
         Diam praesent massa dapibus magna aliquam a dictumst volutpat. Egestas
@@ -39,44 +33,44 @@ function ProductAbout() {
         dui
       </p>
       <hr className="my-2" />
-      <p className="title">Already Holding Bitcoin?</p>
+      <p className="title">Already Holding {props.productName}?</p>
       <div className="flex_row_center max-md:flex-wrap gap-4">
-        <div className="w-[48%] max-md:w-full flex_row_center justify-normal bg-gradient-to-tl from-cyan-600 to-cyan-400 rounded-md p-4 gap-4">
-          <div className="h-full">
+        <div className="border w-1/2 h-full max-md:w-full flex_row_center justify-normal bg-gradient-to-tl from-cyan-600 to-cyan-400 rounded-md p-4 gap-4">
+          <div className="w-2/4">
             <img
               src="./promotion_image_1.jpg"
               alt="promotion_image_1"
-              className="object-center object-cover rounded-md w-44 h-44"
+              className="object-center object-cover rounded-md w-44"
             />
           </div>
-          <div>
-            <h1 className="text-white font-bold text-2xl my-4">
+          <div className="w-2/4">
+            <h1 className="text-white font-bold text-xl my-4">
               Calculate your Profits
             </h1>
             <a
-              href=""
-              className="px-6 py-2 bg-white font-bold rounded-md text-sm text-black inline-block"
+              href="#"
+              className="p-2 bg-white font-bold rounded-md text-sm text-black inline-block"
             >
               Check Now
               <LiaLongArrowAltRightSolid className="inline ml-1" />
             </a>
           </div>
         </div>
-        <div className="w-[48%] max-md:w-full flex_row_center justify-normal bg-gradient-to-tl from-red-600 to-red-400 rounded-md p-4 gap-4">
-          <div className="h-full">
+        <div className="border w-1/2 h-full max-md:w-full flex_row_center justify-normal bg-gradient-to-tl from-red-600 to-red-400 rounded-md p-4 gap-4">
+          <div className="w-2/4">
             <img
               src="./promotion_image_2.jpg"
               alt="promotion_image_2"
-              className="object-center object-cover rounded-md w-44 h-44"
+              className="object-center object-cover rounded-md w-44"
             />
           </div>
-          <div>
-            <h1 className="text-white font-bold text-2xl my-4">
+          <div className="w-2/4">
+            <h1 className="text-white font-bold text-xl my-4">
               Calculate your tax liability
             </h1>
             <a
               href=""
-              className="px-6 py-2 bg-white font-bold rounded-md text-sm text-black inline-block"
+              className="p-2 bg-white font-bold rounded-md text-sm text-black inline-block"
             >
               Check Now
               <LiaLongArrowAltRightSolid className="inline ml-1" />

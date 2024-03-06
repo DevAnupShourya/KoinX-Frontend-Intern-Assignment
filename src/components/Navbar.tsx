@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 
@@ -11,7 +12,7 @@ function Navbar() {
         <img src="Logo.svg" alt="KoinX" />
       </div>
       {/* Navbar for large devices */}
-      <div className="flex_row_center gap-8 max-md:gap-2  max-sm:hidden ">
+      <div className="flex_row_center gap-8 max-lg:gap-4  max-sm:hidden ">
         <a href={"cryptotaxes"} className="navbar_links">
           Crypto Taxes
         </a>

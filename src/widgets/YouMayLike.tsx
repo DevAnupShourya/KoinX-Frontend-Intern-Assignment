@@ -1,129 +1,68 @@
-import { useRef, useState } from "react";
-import MayLikeCard from "../components/MayLikeCard";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import YouMayLikeCarousel from "../components/YouMayLikeCarousel";
+import TrendingCoinsCarousel from "../components/TrendingCoinsCarousel";
+
+import { useEffect, useState } from "react";
+
+interface Coin {
+  shortName: string;
+  coinImage: string;
+  price_change_percentage_24h: number;
+  price: string;
+  sparklineImage: string;
+}
+
+interface CoinItem {
+  symbol: string;
+  small: string;
+  data: {
+    price_change_percentage_24h: { aed: number };
+    price: string;
+    sparkline: string;
+  };
+}
 
 function YouMayLike() {
-  const carousel1Ref = useRef<HTMLDivElement>(null);
-  const carousel2Ref = useRef<HTMLDivElement>(null);
-  const cardContainer1Ref = useRef<HTMLDivElement>(null);
-  const cardContainer2Ref = useRef<HTMLDivElement>(null);
-  const [scrollPosition1, setScrollPosition1] = useState<number>(0);
-  const [scrollPosition2, setScrollPosition2] = useState<number>(0);
+  const [trendingCoins, setTrendingCoins] = useState<Coin[]>([]);
 
-  const handleScroll1 = (direction: "left" | "right") => {
-    const cardContainer = cardContainer1Ref.current;
-    if (!cardContainer) return;
-
-    const cardWidth = cardContainer.clientWidth;
-    let newPosition;
-
-    if (direction === "left") {
-      newPosition = Math.max(scrollPosition1 - cardWidth, 0);
-    } else {
-      newPosition = Math.min(
-        scrollPosition1 + cardWidth,
-        cardContainer.scrollWidth - cardWidth
+  async function fetchTrendingCoins() {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_PUBLIC_KoinX_API_URL}/search/trending`
       );
+      const data = await response.json();
+      const coins: [] = data.coins;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      coins.map((data: any) => {
+        const currentCoin: CoinItem = data.item;
+
+        setTrendingCoins((prev) => [
+          ...prev,
+          {
+            shortName: currentCoin.symbol,
+            coinImage: currentCoin.small,
+            price_change_percentage_24h:
+              currentCoin.data.price_change_percentage_24h.aed,
+            price: currentCoin.data.price,
+            sparklineImage: currentCoin.data.sparkline,
+          },
+        ]);
+      });
+    } catch (error) {
+      console.error(error);
     }
+  }
 
-    setScrollPosition1(newPosition);
-
-    cardContainer.scrollTo({
-      left: newPosition,
-      behavior: "smooth",
-    });
-  };
-
-  const handleScroll2 = (direction: "left" | "right") => {
-    const cardContainer = cardContainer2Ref.current;
-    if (!cardContainer) return;
-
-    const cardWidth = cardContainer.clientWidth;
-    let newPosition;
-
-    if (direction === "left") {
-      newPosition = Math.max(scrollPosition2 - cardWidth, 0);
-    } else {
-      newPosition = Math.min(
-        scrollPosition2 + cardWidth,
-        cardContainer.scrollWidth - cardWidth
-      );
-    }
-
-    setScrollPosition2(newPosition);
-
-    cardContainer.scrollTo({
-      left: newPosition,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    fetchTrendingCoins();
+  }, []);
 
   return (
     <footer className="bg-bg-secondary shadow-lg py-14 padding-x max-lg:mx-4 max-lg:px-4 max-lg:rounded-lg">
       <p className="title">you may also like</p>
-      <div id="may_like_carousel" className="relative" ref={carousel1Ref}>
-        {/* Carousel Handler Btns */}
-        <button
-          className="absolute left-0 top-[50%] -translate-y-1/2  w-8 h-8 bg-bg-secondary shadow-xl rounded-full grid place-items-center"
-          onClick={() => handleScroll1("left")}
-        >
-          <FaAngleLeft />
-        </button>
-        <button
-          className="absolute right-0 top-[50%] -translate-y-1/2 w-8 h-8 bg-bg-secondary shadow-xl rounded-full grid place-items-center"
-          onClick={() => handleScroll1("right")}
-        >
-          <FaAngleRight />
-        </button>
-        {/* Carousel */}
-        <div
-          className="flex flex-nowrap overflow-x-scroll gap-4 px-5 hideScrollBar"
-          ref={cardContainer1Ref}
-        >
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-        </div>
-      </div>
+      <YouMayLikeCarousel coinsData={trendingCoins} />
       <p className="title mt-3">Trending Coins</p>
-      <div id="may_like_carousel" className="relative" ref={carousel2Ref}>
-        {/* Carousel Handler Btns */}
-        <button
-          className="absolute left-0 top-[50%] -translate-y-1/2  w-8 h-8 bg-bg-secondary shadow-xl rounded-full grid place-items-center"
-          onClick={() => handleScroll2("left")}
-        >
-          <FaAngleLeft />
-        </button>
-        <button
-          className="absolute right-0 top-[50%] -translate-y-1/2 w-8 h-8 bg-bg-secondary shadow-xl rounded-full grid place-items-center"
-          onClick={() => handleScroll2("right")}
-        >
-          <FaAngleRight />
-        </button>
-        {/* Carousel */}
-        <div
-          className="flex flex-nowrap overflow-x-scroll gap-4 px-5 hideScrollBar"
-          ref={cardContainer2Ref}
-        >
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-          <MayLikeCard />
-        </div>
-      </div>
+      <TrendingCoinsCarousel coinsData={trendingCoins} />
     </footer>
   );
 }

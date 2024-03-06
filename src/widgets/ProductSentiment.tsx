@@ -1,12 +1,12 @@
-import { IoMdInformationCircle } from "react-icons/io";
+import { useRef, useState } from "react";
 import EventCarouselCard from "../components/EventCarouselCard";
 
+import { IoMdInformationCircle } from "react-icons/io";
 import { HiNewspaper } from "react-icons/hi2";
 import { IoMdTrendingUp } from "react-icons/io";
 import { BsActivity } from "react-icons/bs";
 import { BsAwardFill } from "react-icons/bs";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
-import { useRef, useState } from "react";
 
 function ProductSentiment() {
   const carouselRef = useRef<HTMLDivElement>(null);
